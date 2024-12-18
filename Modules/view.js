@@ -14,6 +14,8 @@ let blnLeft = false;
 let blnSkipTimer = false;
 //used to store sub movement timer handle
 let intSubTimerhandle = 0;
+//drop depth charge timer handle
+let intDepthTimehandle = 0;
 
 const funcPlayAgain = () => {
   //play again?
@@ -22,6 +24,61 @@ const funcPlayAgain = () => {
   modModel.objPlayer.blnStopPlay = false;
 };
 const funcYouWin = () => {
+  /*
+  player hits sub!
+
+*/
+
+  let intNum = 0; //used to sink sub
+  let intShrink = 0; //used to sink sub
+  let intSinkSubTimer = 0; //holds pointer to sink sub timer
+
+  const funcSinkSub = () => {
+    /*
+      lowers sub to bottom of screen then clips it into nothingness!
+    */
+
+    //debug data
+    document.getElementById("divDebug").style.color = "white";
+    document.getElementById("divDebug").style.fontWeight = 400;
+    document.getElementById("divDebug").innerText =
+      "__" + intNum + " " + modModel.imgSub.style.top;
+
+    if (intNum === 9) {
+      //deactivate animation for sub
+      modModel.imgSub.style.animationName = "aniSub1";
+    }
+    if (intNum >= 10 && intNum < 15) {
+      intShrink = intShrink + 10;
+      modModel.imgSub.style.setProperty(
+        "--varSubShrink",
+        `inset(0px 0px ${intShrink}px 0px)`
+      );
+      modModel.imgSub.style.top =
+        modModel.funcConvertToNumber(modModel.imgSub.style.top) + 11 + "px";
+    } else {
+      modModel.imgSub.style.top =
+        modModel.funcConvertToNumber(modModel.imgSub.style.top) + 10 + "px";
+    }
+
+    if (intNum === 15) {
+      window.clearInterval(intSinkSubTimer);
+      intSinkSubTimer = intShrink + 10;
+      modModel.imgSub.style.setProperty(
+        "--varSubShrink",
+        `inset(0px 0px ${intShrink}px 0px)`
+      ); //reset sub
+      modModel.objSub.intSubX = modModel.cnstSubLeft;
+      modModel.imgSub.style.top = modModel.cnstSubTop + "px";
+      modModel.imgSub.style.setProperty(
+        "--varSubShrink",
+        `inset(0px 0px 0px 0px)`
+      );
+    }
+
+    intNum++;
+  };
+
   //player hit sub so stop it moving!
   window.clearInterval(intSubTimerhandle);
   //reset any existing conditions
@@ -40,7 +97,18 @@ const funcYouWin = () => {
   blnSkipTimer = true;
   modModel.objPlayer.intLevel++;
 
-  window.setInterval(() => {
+  //play hit sound
+  const audPlay = new Audio(
+    document.getElementById("sndHit").getAttribute("src")
+  );
+  audPlay.play().async;
+  //activate animation for sub
+  modModel.imgSub.style.animationName = "aniSub";
+
+  //"sink sub" has to be quick as next timer is for 10 seconds!
+  intSinkSubTimer = window.setInterval(funcSinkSub, 1000);
+
+  window.setTimeout(() => {
     modModel.objPlayer.blnStopPlay = false;
     modModel.divHit.hidden = true;
 
@@ -64,10 +132,9 @@ const funcYouWin = () => {
       }
 
       blnSkipTimer = false;
-      //start sub
       funcSetupTimerSub();
     }
-  }, 10000);
+  }, 30000);
 };
 const funcShowYouLose = (blnPlayAgain = false) => {
   modModel.divYoumissed.hidden = false;
@@ -108,45 +175,13 @@ const funcYouLose = (blnJustLives = true) => {
 
     //need timer as if not used and just show missed dialog and pause
     //CSS does not get executed!
+  } else {
+    //play hit sound
+    const audPlay = new Audio(
+      document.getElementById("sndMissed").getAttribute("src")
+    );
+    audPlay.play().async;
   }
-  //player loses
-  // modModel.divYoumissed.hidden = false;
-  // modModel.objPlayer.blnPlayAgain = false;
-  // modModel.objPlayer.blnStopPlay = true;
-
-  // //need timer as if not used and just show missed dialog and pause
-  // //CSS does not get executed!
-  // window.setTimeout(() => {
-  //   modModel.objPlayer.intLivesLeft = modModel.objPlayer.intLivesLeft - 1;
-  //   modModel.divYoumissed.hidden = true;
-
-  //   if (modModel.objPlayer.intLivesLeft <= 0) {
-  //     modModel.objPlayer.blnStopPlay = false;
-  //     divLives.innerText = "Lives: " + modModel.objPlayer.intLivesLeft;
-  //     //show play again screen
-  //     funcPlayAgain();
-  //   } else {
-  //     modModel.funcRestartLevel(false);
-  //     funcUpDateScreen();
-  //   }
-  // }, 10000);
-
-  //sink boat
-  // modModel.imgCloud2.style.setProperty(
-  //   "--varCloud2Shrink",
-  //   `inset(${--varSinkShip}px 0px 0px 0px)`
-  // );
-
-  //   modModel.objPlayer.intLivesLeft = modModel.objPlayer.intLivesLeft - 1;
-
-  //   if (modModel.objPlayer.intLivesLeft <= 0) {
-  //     //show play again screen
-  //     modModel.objPlayer.blnPlayAgain = true;
-  //   } else {
-  //     modModel.objPlayer.blnPlayAgain = false;
-  //     //blnStopPlay = false;
-  //   }
-  // };
 };
 
 const funcDropDepth = function () {
@@ -154,7 +189,7 @@ const funcDropDepth = function () {
   let intNum = 0;
   modModel.objPlayer.blnDroppedDepth = true;
 
-  const funcDepthDrop = window.setInterval(() => {
+  const funcDepthDrop = () => {
     /*
       drop animation AND collision detection 
       when intNun = 515 hit sea bed
@@ -175,7 +210,7 @@ const funcDropDepth = function () {
 
     if (intNum === 515) {
       //stop timer
-      window.clearInterval(funcDepthDrop);
+      window.clearInterval(funcDepthDrop); //funcDepthDrop
       modModel.imgDepth.hidden = true;
       intNum = 0;
       modModel.objPlayer.blnDroppedDepth = false;
@@ -197,7 +232,7 @@ const funcDropDepth = function () {
         ) {
           //hit
           //stop timer
-          window.clearInterval(funcDepthDrop);
+          window.clearInterval(intDepthTimehandle); //funcDepthDrop);
           //hide depth charge
           modModel.imgDepth.hidden = true;
           intNum = 0;
@@ -206,8 +241,9 @@ const funcDropDepth = function () {
         }
       }
     }
-  }, 100);
+  };
 
+  intDepthTimehandle = window.setInterval(funcDepthDrop, 100);
   intNum = 0;
 };
 

@@ -45,36 +45,69 @@ h1 {
       color:cadetblue;
    }
 }
-#divYoumissed, #divHit, #divPlayagain, #divOver {
+#divIntroTextHeader {
+   color:white;
+   position:fixed;
+   top:10%;
+   left:200px;
+   font-weight: 600;
+   font-size: 400%;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#divIntroText {
+   color:gold;
+   position:fixed;
+   top:30%;
+   left:200px;
+   font-weight: 600;
+   font-size: 120%;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#divCopyright, #divInstructions {
    position: fixed; 
-   top: 300px;
-   left: 550px;
-   font-size: 30px;
+   top: 95%;
+}
+#divInstructions {
+   color:chartreuse;
+   left: 50px;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   border-style: solid;
-   padding: 5%;
+   font-size: 120%;
+   letter-spacing: 2px;
 }
-#divYoumissed {
-   color: yellow;
-   animation-name: aniDialog;
-   animation-delay: 1s;
-   animation-duration: 2s;
-   animation-timing-function: ease-in;
-   animation-iteration-count: infinite;
+
+#divCopyright {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 600;
+  color:white;
+  left: 1120px;
+  animation-name: aniCopyright;
+  animation-delay: 1s;
+  animation-duration: 4s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
 }
-@keyframes aniDialog {
-   10% {
-      color: red;
-   }
-   25% {
-      color: blueviolet;
-   }   
-   50% {
-      color: brown;
-   }
+@keyframes aniCopyright {
+  10% {
+     color: antiquewhite;
+  }
+  25% {
+     color: white;
+  }   
+  50% {
+     color:bisque;
+  }
+  70% {
+     color:blanchedalmond; 
+  }
+  80% {
+   color:cornsilk;
+  }
+  90% {
+   color:floralwhite;
+  }
 }
 #btnStart {
-   top:50%;
+   top:85%;
    left:45%;
    width:200px;
    height:60px;
@@ -117,7 +150,113 @@ h1 {
       95% {
          rotate: -2deg;
       }
+      100% {
+         rotate: -1deg;
+      }
 
+}
+
+/*  other screen elements*/
+
+#divYoumissed, #divHit, #divPlayAgain, #divOver {
+   position: fixed; 
+   top: 300px;
+   left: 550px;
+   font-size: 30px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   border-style: solid;
+   padding: 5%;
+   border-radius: 4%;;
+}
+#divHit {
+   pointer-events: none;
+   border: solid;
+   animation: aniHit 3.5s linear infinite;
+}
+@keyframes aniHit {
+    0%
+      {
+        color: darkblue;
+        transform: scale(10%, 10%, 0%);
+      }
+      50% {
+        color: blue;
+        transform: scale(30%, 30%, 0%);
+      }
+      70% {
+        color: lightblue;
+        transform: scale(50%, 50%, 0%);
+      }
+      90% {
+        color:aquamarine;
+        transform: scale(70%, 70%, 0%);
+      }
+}
+#divHitText {
+   color:antiquewhite;
+   font-weight: 400;
+}
+#divYoumissed {
+   color: yellow;
+   animation-name: aniYouMissed;
+   animation-delay: 1s;
+   animation-duration: 2s;
+   animation-timing-function: ease-in;
+   animation-iteration-count: infinite;
+}
+@keyframes aniYouMissed {
+   10% {
+      color: red;
+   }
+   25% {
+      color: blueviolet;
+   }   
+   50% {
+      color: brown;
+   }
+}
+#divPlayAgain {
+   animation-name: aniPlayAgain;
+   animation-delay: 1s;
+   animation-duration: 2s;
+   animation-timing-function: ease-in;
+   animation-iteration-count: infinite;
+}
+@keyframes aniPlayAgain {
+   10% {
+      color: wheat;
+   }
+   25% {
+      color: white;
+   }   
+   50% {
+      color: palevioletred;
+   }
+}
+#divPlayAgainText {
+   animation-name: aniPlayAgainText;
+   animation-delay: 1s;
+   animation-duration: 500ms;
+   animation-timing-function: ease-in;
+   animation-iteration-count: infinite;
+}
+@keyframes aniPlayAgainText {
+   10% {
+      color: yellow;
+   }
+   25% {
+      color: yellowgreen;
+   }   
+   50% {
+      color: lightyellow;
+   }
+   70% {
+      color:gold;
+   }
+}
+#divYoumissedtext {
+   color: white;
+   font-weight: 400;
 }
 
 #divTime, #divScore, #divLives, #divOver {
@@ -128,15 +267,39 @@ h1 {
 }
 #divTime {
    left: 950px;
-   color: aquamarine;
+   animation-name: aniTime;
+   animation-delay: 1s;
+   animation-duration: 4s;
+   animation-timing-function:ease;
+   animation-iteration-count: infinite;
+}
+@keyframes aniTime {
+   0% {
+      color: yellow;
+   }
+   25% {
+      color: yellowgreen;
+   }   
+   50% {
+      color:darkgoldenrod;
+   }
+   70% {
+      color:gold;
+   }
+   90% {
+      color:goldenrod;
+   }
+   100% {
+      color: lightyellow;
+   }
 }
 #divScore {
    left: 800px;
-   color: aquamarine;
+   color: yellow;
 }
 #divLives {
    left: 1200px;
-   color: aquamarine;
+   color: white;
 }
 #divOver {
    left: 1200px;
@@ -234,6 +397,21 @@ h1 {
    top: 700px;
    left: 0px;
    clip-path: var( --varSubShrink);
+   animation-name: aniSub1;  /*PURPOSELY misspelled! javascript corrects...*/
+   animation-duration: 3s;
+   animation-delay: 1s;
+   animation-timing-function: ease;
+   animation-iteration-count: infinite;
+}
+@keyframes aniSub {
+   40% 
+     {
+       rotate: 2deg;
+     }
+   80% 
+     {
+       rotate: -2deg;
+     }
 }
 #imgPlant1, #imgPlant3, #imgPlant5, #imgPlant7, #imgPlant9, #imgPlant11 {
   top: 835px;

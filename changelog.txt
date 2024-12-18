@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+18/12/2024
+After some experimentation added better CSS effects for you hit sub
+Implementing sub sinking with animation!
+New hit and miss sounds
+Lots of internal refactoring
+Intro screen done
+
+
 17/12 2024
 Seabed implemented!
 You win/lose/play again screens and logic implemented

@@ -27,8 +27,10 @@ export const scrGame = document.getElementById("scrGame");
 //win/lose etc
 export const divYoumissed = document.getElementById("divYoumissed");
 export const divHit = document.getElementById("divHit");
-export const divPlayagain = document.getElementById("divPlayagain");
+export const divPlayagain = document.getElementById("divPlayAgain");
 export const divOver = document.getElementById("divOver");
+export const divIntroText = document.getElementById("divIntroText");
+export const divIntroTextHeader = document.getElementById("divIntroTextHeader");
 //level
 export const cnstLevel1Timer = 260000;
 export const cnstLevel2Tiner = 120000;
@@ -60,7 +62,9 @@ export const cnstCloud4WrapX = -150;
 export const cnstCloud5WrapX = -190;
 export const cnstCloud6WrapX = -220;
 export const cnstCloud7WrapX = -390;
-
+//sub start position
+export const cnstSubTop = 700;
+export const cnstSubLeft = 5;
 //player
 export const objPlayer = {
   intScore: 0,
@@ -74,8 +78,8 @@ export const objPlayer = {
 //sub for handling movement inside timer
 export const objSub = {
   intRightHandMargin: scrGame.clientWidth - 160,
-  intDefaultSubX: 5,
-  intSubX: 5,
+  intDefaultSubX: cnstSubLeft,
+  intSubX: cnstSubLeft,
   blnSubShrink: false,
   intSubShrinkAmt: 0,
   imgSubMove: imgSub,
@@ -203,7 +207,6 @@ const funcSetTimers = () => {
 
 const funcCreateButtonEvent = () => {
   //creates button click handler this starts the game
-
   btnStart.addEventListener("click", () => {
     //get background music object src
     const audPlay = new Audio(
@@ -212,9 +215,12 @@ const funcCreateButtonEvent = () => {
 
     audPlay.setAttribute("loop", "true");
     //play background music asynchronously
-    //  audPlay.play().async;
+    audPlay.play().async;
     //hide start button
     btnStart.style.display = "none";
+    //hide intro text
+    divIntroText.hidden = true;
+    divIntroTextHeader.hidden = true;
     //show game screen
     scrGame.style.display = "block";
     funcSetTimers();

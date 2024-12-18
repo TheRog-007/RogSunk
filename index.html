@@ -11,18 +11,26 @@
        <div id="divTime"></div>
        <div id="divScore"></div>
        <div id="divLives"></div>
-    <audio id="audio__file1" controls hidden>
-      <source src="Sound\GuitarHero.mp3" id="sndDrop" type="audio/mp3">
+    <!-- sounds -->
+      <audio id="audio__file1" controls hidden>
+      <source src="Sound/Missed.wav" id="sndMissed" type="audio/wav">
       <source src="Sound\08 - Run Of The Mill.mp3" id="sndBackground" type="audio/mp3">
-      <source src="Sound\/chatResponseReceived3.mp3" id="sndHit" type="audio/mp3">
+      <source src="Sound\\Explosion_Hit.wav" id="sndHit" type="audio/wav">
    </audio>  
   </head>
   <body>
-    <div id="scrGame">
-      <div id="divYoumissed" hidden>You Missed!</div>
-      <div id="divHit" hidden>Hit!</div>
+
+<div id="scrGame">
+      <div id="divYoumissed" hidden>
+        <div id="divYoumissedtext">You Missed The Sub!</div>
+      </div>
+      <div id="divHit" hidden>
+        <div id="divHitText">You Hit The Sub!</div>
+      </div>
       <div id="divOver" hidden>Thanks For Playing!</div>
-      <div id="divPlayagain" hidden>Play Again?</div>
+      <div id="divPlayAgain" hidden>
+          <div id="divPlayAgainText">Play Again Y/N?</div>
+      </div>
 
       <div id="divSky">
         <div id="divDebug"></div>
@@ -39,7 +47,7 @@
        <img id="imgCloud7" src="Images/cloud1.jpg" hidden/> 
       </div>
 
-     <div id="divSea">
+      <div id="divSea">
         <img id="imgSub" src="Images/Sub.png" hidden/>
         <img id="imgPlant1" src="Images/plant1.png"/>
         <img id="imgPlant2" src="Images/plant2.png"/>
@@ -65,11 +73,29 @@
         <img id="imgFish4" src="Images/fish1.png"/>
       </div>
   </div>
-    
-    <button id="btnStart" name="btnStart">Click To Start!</button>
+    <div id="divIntroTextHeader">RogSunk!</div>
+    <div id="divIntroText">
+      <p>
+        From the creator of Rog's Text Adventure comes a new chapter in entertainment
+      </p>
+      <p>Take the USS Rog on the wild sea and hunt for the elusive killer submarine!</p>
+      <p>can you find it in time?</p>
+      <br>
+      <P>What of the reports about mutant fish in the area? </P>
+      <br>
+      <br>
+      <p>The fate of the free world is in your hands commander!</p>
 
+    </div>
+      
+    </p>
+    </div>
+    <!-- bottom of screen  -->
+    <button id="btnStart" name="btnStart">Click To Start!</button>
+    <div id="divInstructions">A - Move Left  D - Move Right  Space - Drop Depth Charge!</div>
+    <div id="divCopyright">(c) 2024 By Roger Williams</div>
+    <!-- modules -->
     <script src="./Modules/controller.js" type="module" defer></script>
     <script src="./Modules/model.js" type="module" defer></script>
-
   </body>
 </html>

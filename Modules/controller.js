@@ -1,11 +1,11 @@
 "use strict";
 /*
 
+  games main loop centres around document event handler
+ for key pewaa
 
-  games main loop centres around txtCommand_onchange
+  there is a timer that runs to move the clouds and another to move the sub, the fish, and the depth charge!
 
-  there is a timer that runs to move the clouds and another to move the sub
-  plus yet another for collision detection!
 */
 import { funcInit } from "./model.js";
 //setup and start game
