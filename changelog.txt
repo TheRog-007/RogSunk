@@ -1,0 +1,34 @@
+Change Log
+==========
+
+17/12 2024
+Seabed implemented!
+You win/lose/play again screens and logic implemented
+Level incrementer on winb implemented
+Bundled exported functions/vars into * so no chance of not knowing which module something comes
+from!
+Renamed constant vars to start with: cnst
+Put on github
+Experimental school of massive mutant fish implemented
+Needs playtesting thoroughly
+
+
+16/12/2024
+Sub/cloud movement and "wrapping" finished
+Boat movement finished
+Depth charge animation and collision detection implemented (needs play testing)
+Async music implemented - looped!
+
+14/12/2024
+Implemented new cloud movement animation with screen wrapping as changing the image width of one
+cloud caused the others to stutter backwards - CSS issue plus wrong solution!
+Now using CSS clip=path to clip the image
+
+13/12/2024
+had idea for simulating clouds "wrapping" round screen by shrinking them when at right hand edge
+
+10/12/2024
+
+RogSunk!
+
+Sub Sunk variant in JavaScript/HTML5/CSS3

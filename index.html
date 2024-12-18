@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link type="text/css" link rel="stylesheet" href="Style.css"></link>
+    <title>RogSunk!</title>   
+    <>
+    <h1 id="Heading1">RogSunk - The Classic Arcade Game Reborn!!</h1>
+       <div id="divTime"></div>
+       <div id="divScore"></div>
+       <div id="divLives"></div>
+    <audio id="audio__file1" controls hidden>
+      <source src="Sound\GuitarHero.mp3" id="sndDrop" type="audio/mp3">
+      <source src="Sound\08 - Run Of The Mill.mp3" id="sndBackground" type="audio/mp3">
+      <source src="Sound\/chatResponseReceived3.mp3" id="sndHit" type="audio/mp3">
+   </audio>  
+  </head>
+  <body>
+    <div id="scrGame">
+      <div id="divYoumissed" hidden>You Missed!</div>
+      <div id="divHit" hidden>Hit!</div>
+      <div id="divOver" hidden>Thanks For Playing!</div>
+      <div id="divPlayagain" hidden>Play Again?</div>
+
+      <div id="divSky">
+        <div id="divDebug"></div>
+       <img id="imgBoat" src="Images/Boat.png" hidden/>
+       <img id="imgDepth" src="Images/bomb.png" hidden/>
+       <img id="imgMissile" src="Images/Missile.png" hidden/>
+       <img id="imgSub" src="Images/Sub.png" hidden/>
+       <img id="imgCloud1" src="Images/cloud1.jpg" hidden/>
+       <img id="imgCloud2" src="Images/cloud2.jpg" hidden/>
+       <img id="imgCloud3" src="Images/cloud3.jpg" hidden/>
+       <img id="imgCloud4" src="Images/cloud4.jpg" hidden/>
+       <img id="imgCloud5" src="Images/cloud2.jpg" hidden/>
+       <img id="imgCloud6" src="Images/cloud1.jpg" hidden/>
+       <img id="imgCloud7" src="Images/cloud1.jpg" hidden/> 
+      </div>
+
+     <div id="divSea">
+        <img id="imgSub" src="Images/Sub.png" hidden/>
+        <img id="imgPlant1" src="Images/plant1.png"/>
+        <img id="imgPlant2" src="Images/plant2.png"/>
+        <img id="imgPlant3" src="Images/plant1.png"/>
+        <img id="imgPlant4" src="Images/plant2.png"/>
+        <img id="imgPlant5" src="Images/plant1.png"/>
+        <img id="imgPlant6" src="Images/plant3.png"/>
+        <img id="imgPlant7" src="Images/plant1.png"/>
+        <img id="imgPlant8" src="Images/plant2.png"/>
+        <img id="imgPlant9" src="Images/plant1.png"/>
+        <img id="imgPlant10" src="Images/plant2.png"/>
+        <img id="imgPlant11" src="Images/plant1.png"/>
+        <img id="imgPlant12" src="Images/plant3.png"/>
+        <img id="imgPlant13" src="Images/plant4.png"/>
+        <img id="imgPlant14" src="Images/plant4.png"/>
+        <img id="imgPlant15" src="Images/plant4.png"/>
+        <img id="imgPlant16" src="Images/plant4.png"/>
+        <img id="imgPlant17" src="Images/plant4.png"/>
+        <img id="imgPlant18" src="Images/plant4.png"/>
+        <img id="imgFish1" src="Images/fish1.png"/>
+        <img id="imgFish2" src="Images/fish1.png"/>
+        <img id="imgFish3" src="Images/fish1.png"/>
+        <img id="imgFish4" src="Images/fish1.png"/>
+      </div>
+  </div>
+    
+    <button id="btnStart" name="btnStart">Click To Start!</button>
+
+    <script src="./Modules/controller.js" type="module" defer></script>
+    <script src="./Modules/model.js" type="module" defer></script>
+
+  </body>
+</html>
