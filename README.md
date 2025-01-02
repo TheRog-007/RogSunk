@@ -15,4 +15,5 @@ Instructions are on screen and game features include:
 
   Background music is: Run of the mill by Judas Priest
 
+Download latest branch for current version
    
